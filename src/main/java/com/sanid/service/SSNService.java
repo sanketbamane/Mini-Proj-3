@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import com.sanid.entity.SSNEnrollEntity;
+import com.sanid.request.SSNEnroll;
+import com.sanid.response.SSNVerify;
 
 public interface SSNService {
 
-	public List<SSNEnrollEntity> findByssnid(Long ssn);
+	public SSNVerify findByssnid(Long ssn);
 	
-	public Long saveSSNEnroll();
+	public Long saveSSNEnroll(SSNEnroll ssnrnroll);
 
 }

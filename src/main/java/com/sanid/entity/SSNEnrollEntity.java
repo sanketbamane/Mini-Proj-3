@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import lombok.Data;
 
 @Data
@@ -17,8 +19,10 @@ public class SSNEnrollEntity {
 
 	@Id
 	@Column(name = "ssnid")
-	@GeneratedValue
-	private Long ssnid;
+	@GenericGenerator(name="ssn_id_gen", strategy = "com.sanid.generators.SsnIdGenerator")	
+	@GeneratedValue(generator = "ssn_id_gen")
+	
+	private Long ssnId;
 	@Column(name = "first_name")
 	private String fname;
 	@Column(name = "last_name")
@@ -27,9 +31,9 @@ public class SSNEnrollEntity {
 	private String dob;
 	@Column(name = "gender")
 	private String gender;
-	@Column(name = "stateName")
-	private String stateName;
-	@Column(name = "photo")
-	private Blob photo;
+	@Column(name = "state_name")
+	private String state_name;
+	/*@Column(name = "photo")
+	private Blob photo;*/
 
 }
