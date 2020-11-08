@@ -5,7 +5,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import lombok.Data;
 
 @Data
-
+@XmlRootElement
 public class SSNVerify {
 	
 	private String ssnId;

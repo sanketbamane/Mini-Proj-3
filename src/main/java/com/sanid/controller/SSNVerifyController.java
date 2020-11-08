@@ -1,6 +1,8 @@
 package com.sanid.controller;
 
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,15 +37,13 @@ public class SSNVerifyController {
 	@Autowired
 	private SSNService service ;
 	
+	//ConcurrentMap<String, SSNVerify>  ssnverify= new ConcurrentHashMap<>();
+	
 	@GetMapping(value = "/ssnVerification/{ssnId}",
-			 consumes= {
-					
-					 "application/json"
-			 },
 			 produces = {
 					
 					 "application/json"
-			 }			
+			 }		
 			)
 	public ResponseEntity<SSNVerifyEntity> handleVerificationRequest(@PathVariable(value = "ssnId")String ssnId) {
 		
@@ -51,10 +51,12 @@ public class SSNVerifyController {
 		
 		
 		
-		return new ResponseEntity<SSNVerifyEntity>(ssnverify, HttpStatus.OK);
 		
-		/*String verify = appProps.getMessages().get(AppConstants.VERIFY);
-		return "verify";*/
+		
+		//String verify = appProps.getMessages().get(AppConstants.VERIFY);
+		
+		
+		return new ResponseEntity<>(ssnverify,HttpStatus.OK);
 		
 	}
 }	
