@@ -24,28 +24,28 @@ public class SSNServiceImpl implements SSNService {
 	private SSNEnrollRepository repo;
 	
 	@Override
-	public String saveSSNEnroll(ssnEnroll ssnEnroll) {
+	public SSNVerifyEntity saveSSNEnroll(ssnEnroll ssnEnroll) {
 		// TODO Auto-generated method stub
 
 		SSNVerifyEntity entity = new SSNVerifyEntity();
 		BeanUtils.copyProperties(ssnEnroll,entity);
 		
 		SSNVerifyEntity savedEntity = repo.save(entity);
-		String ssnId = savedEntity.getSsnId();
+		//String ssnId = savedEntity.getSsnId();
 		
-		return ssnId;
+		return savedEntity;
 	}
 
 	@Override
-	public SSNVerify findByssnid(String ssn) {
+	public SSNVerifyEntity findByssnid(String ssn) {
 		// TODO Auto-generated method stub
 		 Optional<SSNVerifyEntity> optional = repo.findById(ssn);
-		 SSNVerify ssnVerify = new SSNVerify();
+		
 		if(optional.isPresent()) {
 			SSNVerifyEntity	 entity = optional.get();
 			
-			BeanUtils.copyProperties(entity, ssnVerify);
-			return ssnVerify;
+			
+			return entity;
 			
 		}else {
 			throw new NoSsnFoundException("SSN not found");

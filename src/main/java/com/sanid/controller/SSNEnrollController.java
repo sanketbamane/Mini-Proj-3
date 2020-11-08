@@ -51,13 +51,14 @@ public class SSNEnrollController {
 	 * } )
 	 */
 
-	public String handleEnrollmentBtn(@RequestBody ssnEnroll ssnEnroll) {
+	public ResponseEntity<SSNVerifyEntity> handleEnrollmentBtn(@RequestBody ssnEnroll ssnEnroll) {
 		// logger.info("started");
-		String ssnNo = service.saveSSNEnroll(ssnEnroll);
-		String ssnDtls = "Enrollment success and no is :- " + ssnNo;
-
+		SSNVerifyEntity ssnDtls = service.saveSSNEnroll(ssnEnroll);
+		
+		//String ssnDtls = "Enrollment success and no is :- " + ssnNo;
+		
 		// logger.info("completed");
-		return ssnDtls;
+		return new ResponseEntity<SSNVerifyEntity>(ssnDtls, HttpStatus.CREATED);
 
 	}
 }

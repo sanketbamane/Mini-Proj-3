@@ -11,8 +11,8 @@ import com.sanid.response.SSNVerify;
 
 public interface SSNService {
 
-	public SSNVerify findByssnid(String ssnid);
+	public SSNVerifyEntity findByssnid(String ssnid);
 
-	public String saveSSNEnroll(ssnEnroll ssnenroll);
+	public SSNVerifyEntity saveSSNEnroll(ssnEnroll ssnenroll);
 
 }

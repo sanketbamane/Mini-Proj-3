@@ -45,16 +45,16 @@ public class SSNVerifyController {
 					 "application/json"
 			 }			
 			)
-	public ResponseEntity<SSNVerify> handleVerificationRequest(@PathVariable(value = "ssnId")String ssnId) {
+	public ResponseEntity<SSNVerifyEntity> handleVerificationRequest(@PathVariable(value = "ssnId")String ssnId) {
 		
-		SSNVerify ssnverify = service.findByssnid(ssnId);
+		SSNVerifyEntity ssnverify = service.findByssnid(ssnId);
 		
 		
 		
-		return new ResponseEntity<SSNVerify>(ssnverify, HttpStatus.OK);
+		return new ResponseEntity<SSNVerifyEntity>(ssnverify, HttpStatus.OK);
 		
 		/*String verify = appProps.getMessages().get(AppConstants.VERIFY);
 		return "verify";*/
 		
 	}
-}
+}	
