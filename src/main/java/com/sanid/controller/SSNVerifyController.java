@@ -49,10 +49,6 @@ public class SSNVerifyController {
 		
 		SSNVerifyEntity ssnverify = service.findByssnid(ssnId);
 		
-		
-		
-		
-		
 		//String verify = appProps.getMessages().get(AppConstants.VERIFY);
 		
 		

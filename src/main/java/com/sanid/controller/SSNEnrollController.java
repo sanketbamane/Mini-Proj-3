@@ -39,11 +39,7 @@ public class SSNEnrollController {
 			 consumes= {
 						
 					 "application/json"
-			 },
-			 produces = {
-					
-					 "application/json"
-			 }			
+			 }	
 			)
 	/*
 	 * (bracket), produces = { "application/xml", "application/json"
@@ -51,14 +47,32 @@ public class SSNEnrollController {
 	 * } )
 	 */
 
-	public ResponseEntity<SSNVerifyEntity> handleEnrollmentBtn(@RequestBody ssnEnroll ssnEnroll) {
+	public ResponseEntity<String> handleEnrollmentBtn(@RequestBody ssnEnroll ssnEnroll) {
 		// logger.info("started");
 		SSNVerifyEntity ssnDtls = service.saveSSNEnroll(ssnEnroll);
+		char arr[] = null;
+		char a;
 		
-		//String ssnDtls = "Enrollment success and no is :- " + ssnNo;
+		String ssn= ssnDtls.getSsnId();
+		
+		/*for(int i=0;i<ssn.length();i++) {
+					
+			if(arr[i]==3) {
+				ssn.replace(arr[i], '-');
+			}else if (arr[i]==5) {
+				ssn.replace(arr[i], '-');
+			}
+			
+			
+			
+		}*/
+		
+				
+		String msg = "Enrollment success!!! ssn no is :- " +ssn;
 		
 		// logger.info("completed");
-		return new ResponseEntity<SSNVerifyEntity>(ssnDtls, HttpStatus.CREATED);
+		return new ResponseEntity<>(msg, HttpStatus.CREATED);
 
 	}
+
 }
